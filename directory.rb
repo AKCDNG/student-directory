@@ -44,7 +44,7 @@ def input_students
   name = STDIN.gets.chomp
 
   while !name.empty? do
-    @students << {name: name, cohort: :november}
+    student_input_hash(name)
     puts "Now we have #{@students.count} students"
 
     name = STDIN.gets.chomp
@@ -92,7 +92,7 @@ def load_students (filename="students.csv")
   file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(",")
-    @students << {name: name, cohort: cohort.to_sym}
+    student_input_hash(name, cohort)
   end
   file.close
 end
@@ -107,6 +107,11 @@ def try_loading_students
     puts "Sorry, #{filename} doesn't exist."
     exit
   end
+end
+
+# function to add to student hash
+def student_input_hash(name, cohort=:november)
+  @students << {name: name, cohort: cohort}
 end
 
 try_loading_students
