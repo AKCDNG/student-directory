@@ -82,8 +82,9 @@ end
 
 #saves to .csv file
 def save_students
-  file = File.open("students.csv", "w")
-
+  puts "Please enter file name: "
+  @filename = gets.chomp
+  file = File.open(@filename, "w")
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
     csv_line = student_data.join(",")
@@ -92,11 +93,17 @@ def save_students
   file.close
 end
 
-def load_students (filename="students.csv")
-  file = File.open(filename, "r")
-  file.readlines.each do |line|
-  name, cohort = line.chomp.split(",")
-    @students << {name: name, cohort: cohort.to_sym}
+def load_students (filename=@filename)
+  puts "Enter a file name:"
+  input = gets.chomp
+  if File.exist?(input)
+    file = File.open(input, "r")
+  else
+    file = File.open(filename, "r")
+  end
+    file.readlines.each do |line|
+    name, cohort = line.chomp.split(",")
+      @students << {name: name, cohort: cohort.to_sym}
   end
   file.close
 end
