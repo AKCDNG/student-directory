@@ -11,11 +11,11 @@ end
 
 #prints the menu from interactive_menu
 def print_menu
-  puts "1. Input the students"
-  puts "2. Show the students"
-  puts "3. Save the list to students.csv"
-  puts "4. Load the list from students.csv"
-  puts "9. Exit"
+  puts "1. Input the students", 
+  "2. Show the students",
+  "3. Save the list to students.csv",
+  "4. Load the list from students.csv", 
+  "9. Exit"
 end
 
 #takes user input from interactive_menu and makes a choice
@@ -38,8 +38,8 @@ end
 
 #enter students into hash within @students list.
 def input_students
-  puts "Please enter the names of the students"
-  puts "To finish, just hit return twice"
+  puts "Please enter the names of the students", 
+  "To finish, just hit return twice"
 
   name = STDIN.gets.chomp
 
@@ -60,8 +60,8 @@ end
 
 #prints header from show_students function
 def print_header
-  puts "The students of Villains Academy"
-  puts "-------------"
+  puts "The students of Villains Academy", 
+  "-------------"
 end
 
 #prints list of students from show_students function
